@@ -1,0 +1,222 @@
+.drinks-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.drinks-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="coffee-beans" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse"><circle cx="15" cy="15" r="2" fill="%23006241" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23coffee-beans)"/></svg>');
+  opacity: 0.3;
+}
+
+.drinks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.drink-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.drink-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #006241, #8B4513);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Removed hover animations */
+
+.drink-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #006241, #004d33);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Removed icon hover animation */
+
+.drink-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.drink-card p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.drink-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.drink-tags span {
+  background: rgba(0, 98, 65, 0.1);
+  color: #006241;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.drink-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stars {
+  font-size: 1rem;
+}
+
+.drink-card.featured {
+  background: linear-gradient(135deg, #006241, #004d33);
+  color: white;
+  transform: scale(1.05);
+}
+
+.drink-card.featured::before {
+  background: linear-gradient(90deg, #FF6B35, #FFD700);
+}
+
+.drink-card.featured h3 {
+  color: white;
+}
+
+.drink-card.featured p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.drink-card.featured .drink-icon {
+  background: linear-gradient(135deg, #FF6B35, #FF8C42);
+}
+
+.drink-card.featured .drink-tags span {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.featured-badge {
+  background: #FF6B35;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  animation: pulse 2s infinite;
+}
+
+.drinks-footer {
+  margin-top: 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.drinks-footer p {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.drink-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.drink-stat {
+  text-align: center;
+  padding: 1.5rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Removed stat hover animation */
+
+.drink-stat .stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #006241;
+  margin-bottom: 0.5rem;
+}
+
+.drink-stat .stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .drinks-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .drink-card {
+    padding: 1.5rem;
+  }
+} 

@@ -1,0 +1,94 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+}
+
+/* Optimized button styles */
+.btn {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #006241, #004d33);
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 98, 65, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #004d33, #003d29);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(0, 98, 65, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #006241;
+  border: 2px solid #006241;
+  backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+  background: #006241;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 98, 65, 0.3);
+}
+
+/* Section styles */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  color: #333;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #006241;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+  font-weight: 300;
+}
+
+/* Performance optimizations */
+.optimized-section {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+  }
+} 
