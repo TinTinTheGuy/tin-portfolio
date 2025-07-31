@@ -6,6 +6,7 @@ import './PortfolioGallery.css';
 const PortfolioGallery = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState('all');
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const projects = [
     {
@@ -13,7 +14,9 @@ const PortfolioGallery = () => {
       title: 'Cardinal IT Website',
       category: 'web',
       description: 'Developed a modern IT services website with professional design, responsive layout, and call-to-action features for Cardinal IT.',
-      image: '/portfolio/cardinal-it-website.png',
+      images: [
+        process.env.PUBLIC_URL + '/portfolio/cardinal-it-website.png'
+      ],
       technologies: ['React', 'JavaScript', 'HTML/CSS', 'Web Development'],
       github: null,
       demo: 'https://cardit.us',
@@ -21,44 +24,72 @@ const PortfolioGallery = () => {
     },
     {
       id: 2,
-      title: 'Network Infrastructure Setup',
-      category: 'networking',
-      description: 'Installed and configured enterprise network equipment including switches, routers, and access points. Set up VLANs and network security protocols.',
-      image: '/portfolio/network-setup.jpg',
-      technologies: ['Cisco IOS', 'Network Equipment', 'VLANs', 'Security'],
+      title: 'Cable Management Excellence',
+      category: 'cable-management',
+      description: 'Professional cable management and organization for network infrastructure. Implemented proper cable routing, labeling, and management systems.',
+      images: [
+        process.env.PUBLIC_URL + '/portfolio/cable-management/IMG_4225.jpg',
+        process.env.PUBLIC_URL + '/portfolio/cable-management/IMG_4227.jpg',
+        process.env.PUBLIC_URL + '/portfolio/cable-management/IMG_4228.jpg',
+        process.env.PUBLIC_URL + '/portfolio/cable-management/IMG_4364.jpg',
+        process.env.PUBLIC_URL + '/portfolio/cable-management/IMG_4365.jpg',
+        process.env.PUBLIC_URL + '/portfolio/cable-management/IMG_4366.jpg'
+      ],
+      technologies: ['Cable Management', 'Network Infrastructure', 'Organization', 'Labeling'],
       github: null,
       demo: null,
       featured: true
     },
     {
       id: 3,
-      title: 'Fiber Optic Installation',
-      category: 'infrastructure',
-      description: 'Installed and terminated fiber optic cables for high-speed data transmission. Configured fiber switches and tested connectivity.',
-      image: '/portfolio/fiber-installation.jpg',
-      technologies: ['Fiber Optics', 'Cable Termination', 'Network Testing', 'Infrastructure'],
+      title: 'Server Room Setup',
+      category: 'server-setup',
+      description: 'Complete server room installation and configuration. Set up enterprise-grade servers with proper cooling, power management, and security.',
+      images: [
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4415.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4406.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4407.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4410.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4411.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4414.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4419.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4425.jpg',
+        process.env.PUBLIC_URL + '/portfolio/server-setup/IMG_4426.jpg'
+      ],
+      technologies: ['Server Installation', 'Enterprise Hardware', 'Power Management', 'Cooling Systems'],
       github: null,
       demo: null,
-      featured: false
+      featured: true
     },
     {
       id: 4,
-      title: 'Ethernet Cable Management',
-      category: 'networking',
-      description: 'Organized and installed Ethernet cables for network infrastructure. Implemented proper cable management and labeling systems.',
-      image: '/portfolio/ethernet-cables.jpg',
-      technologies: ['Ethernet', 'Cable Management', 'Network Setup', 'Infrastructure'],
+      title: 'Network Infrastructure Design',
+      category: 'network-infrastructure',
+      description: 'Comprehensive network infrastructure design and implementation. Configured switches, routers, and wireless access points for optimal performance.',
+      images: [
+        process.env.PUBLIC_URL + '/portfolio/network-infrastructure/IMG_4751.jpg',
+        process.env.PUBLIC_URL + '/portfolio/network-infrastructure/IMG_4752.jpg',
+        process.env.PUBLIC_URL + '/portfolio/network-infrastructure/IMG_4753.jpg',
+        process.env.PUBLIC_URL + '/portfolio/network-infrastructure/IMG_5134.jpg',
+        process.env.PUBLIC_URL + '/portfolio/network-infrastructure/IMG_5135.jpg'
+      ],
+      technologies: ['Network Design', 'Cisco Equipment', 'Wireless Networks', 'Infrastructure'],
       github: null,
       demo: null,
       featured: false
     },
     {
       id: 5,
-      title: 'Security Camera Systems',
-      category: 'security',
-      description: 'Installed and configured IP security camera systems. Set up monitoring software and remote access capabilities.',
-      image: '/portfolio/camera-systems.jpg',
-      technologies: ['IP Cameras', 'Security Systems', 'Monitoring', 'Network Setup'],
+      title: 'Security Camera Installation',
+      category: 'security-systems',
+      description: 'Professional security camera system installation and configuration. Set up IP cameras with monitoring software and remote access capabilities.',
+      images: [
+        process.env.PUBLIC_URL + '/portfolio/security-systems/IMG_5458.jpg',
+        process.env.PUBLIC_URL + '/portfolio/security-systems/IMG_5459.jpg',
+        process.env.PUBLIC_URL + '/portfolio/security-systems/IMG_5719.jpg',
+        process.env.PUBLIC_URL + '/portfolio/security-systems/IMG_5721.jpg'
+      ],
+      technologies: ['IP Cameras', 'Security Systems', 'Monitoring', 'Remote Access'],
       github: null,
       demo: null,
       featured: false
@@ -66,9 +97,21 @@ const PortfolioGallery = () => {
     {
       id: 6,
       title: 'Network Equipment Configuration',
-      category: 'networking',
-      description: 'Configured and optimized network equipment including switches, routers, and wireless access points for optimal performance.',
-      image: '/portfolio/equipment-config.jpg',
+      category: 'equipment-config',
+      description: 'Advanced network equipment configuration and optimization. Configured enterprise switches and routers for maximum performance and security.',
+      images: [
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4406.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4407.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4414.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4419.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4425.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4426.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4751.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4752.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_4753.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_5134.jpg',
+        process.env.PUBLIC_URL + '/portfolio/equipment-config/IMG_5135.jpg'
+      ],
       technologies: ['Network Equipment', 'Configuration', 'Optimization', 'Troubleshooting'],
       github: null,
       demo: null,
@@ -79,9 +122,11 @@ const PortfolioGallery = () => {
   const filters = [
     { key: 'all', label: 'All Projects' },
     { key: 'web', label: 'Web Development' },
-    { key: 'networking', label: 'Networking' },
-    { key: 'security', label: 'Security Systems' },
-    { key: 'infrastructure', label: 'Infrastructure' }
+    { key: 'cable-management', label: 'Cable Management' },
+    { key: 'server-setup', label: 'Server Setup' },
+    { key: 'network-infrastructure', label: 'Network Infrastructure' },
+    { key: 'security-systems', label: 'Security Systems' },
+    { key: 'equipment-config', label: 'Equipment Config' }
   ];
 
   const filteredProjects = filter === 'all' 
@@ -91,9 +136,11 @@ const PortfolioGallery = () => {
   const getCategoryIcon = (category) => {
     const icons = {
       web: 'fas fa-globe',
-      security: 'fas fa-shield-alt',
-      networking: 'fas fa-network-wired',
-      infrastructure: 'fas fa-server'
+      'cable-management': 'fas fa-plug',
+      'server-setup': 'fas fa-server',
+      'network-infrastructure': 'fas fa-network-wired',
+      'security-systems': 'fas fa-shield-alt',
+      'equipment-config': 'fas fa-cogs'
     };
     return icons[category] || 'fas fa-code';
   };
@@ -101,11 +148,39 @@ const PortfolioGallery = () => {
   const getCategoryColor = (category) => {
     const colors = {
       web: '#0077b5',
-      security: '#dc3545',
-      networking: '#006241',
-      infrastructure: '#6f42c1'
+      'cable-management': '#28a745',
+      'server-setup': '#6f42c1',
+      'network-infrastructure': '#006241',
+      'security-systems': '#dc3545',
+      'equipment-config': '#fd7e14'
     };
     return colors[category] || '#333';
+  };
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
+
+  const nextImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProject.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProject.images.length - 1 : prev - 1
+      );
+    }
+  };
+
+  const closeModal = () => {
+    setSelectedProject(null);
+    setCurrentImageIndex(0);
   };
 
   return (
@@ -168,24 +243,30 @@ const PortfolioGallery = () => {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}
                 whileHover={{ y: -5 }}
-                onClick={() => setSelectedProject(project)}
+                onClick={() => handleProjectClick(project)}
               >
                 <div className="portfolio-image">
                   <div className="image-placeholder" style={{ backgroundColor: getCategoryColor(project.category) }}>
                     <i className={getCategoryIcon(project.category)}></i>
                   </div>
-                  {project.image && (
+                  {project.images && project.images.length > 0 && (
                     <img 
-                      src={project.image} 
+                      src={project.images[0]} 
                       alt={project.title}
                       className="portfolio-image-file"
+                      onLoad={(e) => {
+                        console.log('Image loaded successfully:', project.images[0]);
+                        e.target.style.display = 'block';
+                        e.target.nextElementSibling.style.display = 'none';
+                      }}
                       onError={(e) => {
+                        console.error('Image failed to load:', project.images[0]);
                         e.target.style.display = 'none';
                         e.target.nextElementSibling.style.display = 'flex';
                       }}
                     />
                   )}
-                  <div className="image-placeholder" style={{ backgroundColor: getCategoryColor(project.category), display: project.image ? 'none' : 'flex' }}>
+                  <div className="image-placeholder" style={{ backgroundColor: getCategoryColor(project.category), display: project.images && project.images.length > 0 ? 'none' : 'flex' }}>
                     <i className={getCategoryIcon(project.category)}></i>
                   </div>
                   {project.featured && (
@@ -262,7 +343,7 @@ const PortfolioGallery = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.1 }}
-              onClick={() => setSelectedProject(null)}
+              onClick={closeModal}
             >
               <motion.div
                 className="project-modal"
@@ -274,25 +355,57 @@ const PortfolioGallery = () => {
               >
                 <button 
                   className="modal-close"
-                  onClick={() => setSelectedProject(null)}
+                  onClick={closeModal}
                 >
                   <i className="fas fa-times"></i>
                 </button>
                 
                 <div className="modal-content">
                   <div className="modal-image">
-                    {selectedProject.image && (
-                      <img 
-                        src={selectedProject.image} 
-                        alt={selectedProject.title}
-                        className="modal-image-file"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextElementSibling.style.display = 'flex';
-                        }}
-                      />
+                    {selectedProject.images && selectedProject.images.length > 0 && (
+                      <>
+                        <img 
+                          src={selectedProject.images[currentImageIndex]} 
+                          alt={selectedProject.title}
+                          className="modal-image-file"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextElementSibling.style.display = 'flex';
+                          }}
+                        />
+                        
+                        {/* Image Navigation Controls */}
+                        {selectedProject.images.length > 1 && (
+                          <>
+                            <button className="image-nav-btn prev-btn" onClick={prevImage}>
+                              <i className="fas fa-chevron-left"></i>
+                            </button>
+                            <button className="image-nav-btn next-btn" onClick={nextImage}>
+                              <i className="fas fa-chevron-right"></i>
+                            </button>
+                            
+                            {/* Image Counter */}
+                            <div className="image-counter">
+                              {currentImageIndex + 1} / {selectedProject.images.length}
+                            </div>
+                            
+                            {/* Image Thumbnails */}
+                            <div className="image-thumbnails">
+                              {selectedProject.images.map((image, index) => (
+                                <img
+                                  key={index}
+                                  src={image}
+                                  alt={`${selectedProject.title} ${index + 1}`}
+                                  className={`thumbnail ${index === currentImageIndex ? 'active' : ''}`}
+                                  onClick={() => setCurrentImageIndex(index)}
+                                />
+                              ))}
+                            </div>
+                          </>
+                        )}
+                      </>
                     )}
-                    <div className="image-placeholder" style={{ backgroundColor: getCategoryColor(selectedProject.category), display: selectedProject.image ? 'none' : 'flex' }}>
+                    <div className="image-placeholder" style={{ backgroundColor: getCategoryColor(selectedProject.category), display: selectedProject.images && selectedProject.images.length > 0 ? 'none' : 'flex' }}>
                       <i className={getCategoryIcon(selectedProject.category)}></i>
                     </div>
                   </div>

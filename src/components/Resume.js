@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import CoffeeParticles from './CoffeeParticles';
+import { usePDFDownload } from '../hooks/usePDFDownload';
 import './Resume.css';
 
 const Resume = () => {
+  const { downloadPDF } = usePDFDownload();
+  
   return (
     <section id="resume" className="resume-section">
       <CoffeeParticles count={3} />
@@ -64,10 +67,13 @@ const Resume = () => {
                 </div>
               </div>
               <div className="resume-actions">
-                <a href="/resume/Resume.pdf" className="btn btn-primary" download>
+                <button 
+                  className="btn btn-primary" 
+                  onClick={() => downloadPDF('/resume/Resume.pdf', 'Resume.pdf')}
+                >
                   <i className="fas fa-download"></i>
                   <span>Download PDF</span>
-                </a>
+                </button>
                 <a href="/resume/Resume.pdf" className="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                   <i className="fas fa-eye"></i>
                   <span>View Online</span>
@@ -124,10 +130,13 @@ const Resume = () => {
                       <span>Access Control</span>
                     </div>
                     <div className="cert-actions">
-                      <a href="/certificates/CompTIA Security+ ce certificate.pdf" className="btn btn-sm btn-primary" download>
+                      <button 
+                        className="btn btn-sm btn-primary" 
+                        onClick={() => downloadPDF('/certificates/CompTIA Security+ ce certificate.pdf', 'CompTIA Security+ ce certificate.pdf')}
+                      >
                         <i className="fas fa-download"></i>
                         Download Certificate
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -165,10 +174,13 @@ const Resume = () => {
                       <span>TCP/IP</span>
                     </div>
                     <div className="cert-actions">
-                      <a href="/certificates/CompTIA Network+ ce certificate.pdf" className="btn btn-sm btn-primary" download>
+                      <button 
+                        className="btn btn-sm btn-primary" 
+                        onClick={() => downloadPDF('/certificates/CompTIA Network+ ce certificate.pdf', 'CompTIA Network+ ce certificate.pdf')}
+                      >
                         <i className="fas fa-download"></i>
                         Download Certificate
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>

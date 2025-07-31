@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import CoffeeParticles from './CoffeeParticles';
+import { usePDFDownload } from '../hooks/usePDFDownload';
 import './Contact.css';
 
 const Contact = () => {
+  const { downloadPDF } = usePDFDownload();
+  
   const contactMethods = [
     {
       icon: 'fas fa-envelope',
@@ -47,7 +50,7 @@ const Contact = () => {
       icon: 'fas fa-download',
       title: 'Download Resume',
       description: 'Get my professional resume',
-      action: () => window.open('/resume/Resume.pdf', '_blank'),
+      action: () => downloadPDF('/resume/Resume.pdf', 'Resume.pdf'),
       color: '#006241'
     },
     {
